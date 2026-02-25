@@ -1,0 +1,9 @@
+@use 'grid-mixins' as *;
+
+:host {
+  @include span-centered-responsive((
+    mobile: 12,
+    tablet: 6,
+    desktop: 4
+  ));
+}

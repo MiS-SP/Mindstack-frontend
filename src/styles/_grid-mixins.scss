@@ -1,0 +1,59 @@
+$breakpoints: (
+  mobile: 0,
+  tablet: 768px,
+  desktop: 1024px,
+  wide: 1440px
+) !default;
+
+@mixin mq($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $value: map-get($breakpoints, $breakpoint);
+    @if $value == 0 {
+      @content; // Для mobile-first: стили без медиа-запроса
+    } @else {
+      @media (min-width: $value) {
+        @content;
+      }
+    }
+  } @else {
+    @warn "Брейкпоинт '#{$breakpoint}' не найден. Доступные: #{map-keys($breakpoints)}";
+  }
+}
+
+@mixin grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+@mixin span($n) {
+  grid-column: span $n;
+}
+
+@mixin span-centered($n, $total: 12) {
+  $start: ($total - $n) / 2 + 1;
+  grid-column: #{$start} / span #{$n};
+}
+
+@mixin span-responsive($sizes) {
+  @each $breakpoint, $columns in $sizes {
+    @include mq($breakpoint) {
+      grid-column: span $columns;
+    }
+  }
+}
+
+@mixin span-centered-responsive($sizes, $total: 12) {
+  @each $breakpoint, $columns in $sizes {
+    @include mq($breakpoint) {
+      @if $columns == $total {
+        // Если на весь экран — просто span 12
+        grid-column: span $total;
+      } @else {
+        // Иначе считаем позицию для центрирования
+        $start: ($total - $columns) / 2 + 1;
+        grid-column: #{$start} / span #{$columns};
+      }
+    }
+  }
+}

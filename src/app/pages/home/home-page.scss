@@ -1,0 +1,6 @@
+@use 'grid-mixins' as *;
+
+:host {
+  @include grid-container;
+  padding: 0 1rem;
+}
