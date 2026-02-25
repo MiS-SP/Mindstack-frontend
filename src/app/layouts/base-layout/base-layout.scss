@@ -1,0 +1,8 @@
+@use '@angular/material' as mat;
+
+mat-drawer-container {
+  @include mat.sidenav-overrides((
+    container-background-color: var(--mat-sys-primary-container),
+    container-text-color: var(--mat-sys-primary),
+  ));
+}

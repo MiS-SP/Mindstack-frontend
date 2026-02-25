@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+
+#base-header {
+  @include mat.toolbar-overrides((
+    container-background-color: var(--mat-sys-primary-container),
+    container-text-color: var(--mat-sys-primary),
+  ));
+
+  .mat-drawer {
+    border-top-right-radius: 0 !important;
+  }
+}

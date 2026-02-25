@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
+import {Achievements} from '../../sections/achievements/achievements';
 
 @Component({
   selector: 'app-home-page',
-  imports: [],
+  imports: [
+    Achievements
+  ],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
 })

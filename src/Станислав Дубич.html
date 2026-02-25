@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Станислав Дубич — Senior Backend Developer | Java, Go, High-Load</title>
+    <meta name="description" content="Backend-разработчик с 16+ лет опыта. Специализация: высоконагруженные системы, платёжные интеграции, real-time аналитика. Java, Go, Kotlin, PostgreSQL, Kafka.">
+    <meta name="keywords" content="backend developer, java developer, go developer, высоконагруженные системы, разработчик на заказ, senior developer">
+    <meta name="author" content="Станислав Дубич">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dubich.dev/">
+    <link rel="icon" href="https://dubich.dev/favicon.ico" type="image/x-icon">
+
+    <!-- Preload критических шрифтов -->
+    <link rel="preload" href="https://dubich.dev/fonts/jetbrains-mono-cyrillic.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="preload" href="https://dubich.dev/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin="">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Станислав Дубич — Senior Backend Developer">
+    <meta property="og:description" content="Backend-разработчик с 16+ лет опыта. Высоконагруженные системы, платёжные интеграции, real-time аналитика.">
+    <meta property="og:url" content="https://dubich.dev/">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:image" content="https://dubich.dev/og-image.png">
+
+    <meta name="verification" content="13bf071e6afa120cfc23796d737bb7">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Станислав Дубич",
+        "jobTitle": "Senior Backend Developer",
+        "url": "https://dubich.dev/",
+        "email": "stas.dubich@yandex.ru",
+        "sameAs": [
+            "https://t.me/sensei_developer",
+            "https://github.com/stas-dubich",
+            "https://habr.com/ru/users/stas_dubich/"
+        ],
+        "knowsAbout": ["Java", "Go", "Kotlin", "PostgreSQL", "Kafka", "Redis", "Kubernetes", "High-Load Systems"]
+    }
+    </script>
+    <style>
+        /* Встроенные критические шрифты */
+        @font-face {
+            font-family: 'JetBrains Mono';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(/fonts/jetbrains-mono-cyrillic.woff2) format('woff2');
+            unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+        }
+        @font-face {
+            font-family: 'JetBrains Mono';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(/fonts/jetbrains-mono-latin.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: 'JetBrains Mono';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url(/fonts/jetbrains-mono-cyrillic.woff2) format('woff2');
+            unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+        }
+        @font-face {
+            font-family: 'JetBrains Mono';
+            font-style: normal;
+            font-weight: 700;
+            font-display: swap;
+            src: url(/fonts/jetbrains-mono-latin.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --green: #00ff00;
+            --green-dim: #00aa00;
+            --green-dark: #003300;
+            --amber: #ffb000;
+            --bg: #0a0a0a;
+            --bg-light: #111;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg);
+            color: var(--green);
+            line-height: 1.6;
+            font-size: 14px;
+            min-height: 100vh;
+        }
+
+        /* Scanlines effect */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0.15),
+                rgba(0, 0, 0, 0.15) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .terminal {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .prompt {
+            color: var(--amber);
+        }
+
+        .command {
+            color: #fff;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 18px;
+            background: var(--green);
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .output {
+            margin: 1.5rem 0 2.5rem 0;
+            padding-left: 1rem;
+            border-left: 2px solid var(--green-dark);
+        }
+
+        .section-title {
+            color: var(--amber);
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-top: 2rem;
+            margin-bottom: 0;
+        }
+
+        .section-title::before {
+            content: "# ";
+            color: var(--green-dim);
+        }
+
+        .header {
+            text-align: center;
+            padding: 2rem 0 1rem 0;
+            border-bottom: 1px solid var(--green-dark);
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: var(--green);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .role {
+            color: var(--amber);
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .tagline {
+            color: var(--green-dim);
+            font-size: 0.9rem;
+        }
+
+        .intro {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border-left: 3px solid var(--amber);
+        }
+
+        .intro p {
+            color: var(--green-dim);
+            font-size: 14px;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section {
+            margin: 2rem 0;
+        }
+
+        .section-title {
+            color: var(--amber);
+            margin-bottom: 1rem;
+        }
+
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .stack-block {
+            background: var(--bg-light);
+            border: 1px solid var(--green-dark);
+            padding: 0.75rem;
+        }
+
+        .stack-block h3 {
+            color: var(--amber);
+            font-size: 11px;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .stack-block span {
+            display: block;
+            color: var(--green);
+            font-size: 13px;
+            margin: 0.15rem 0;
+        }
+
+        .stack-block span::before {
+            content: "→ ";
+            color: var(--green-dark);
+        }
+
+        @media (max-width: 600px) {
+            .stack-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .job {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: var(--bg-light);
+            border: 1px solid var(--green-dark);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-title {
+            color: #fff;
+        }
+
+        .job-period {
+            color: var(--green-dim);
+        }
+
+        .job-desc {
+            color: var(--green-dim);
+            font-size: 13px;
+        }
+
+        .job-desc li {
+            margin: 0.25rem 0;
+            list-style: none;
+        }
+
+        .job-desc li::before {
+            content: "→ ";
+            color: var(--amber);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .project {
+            display: block;
+            padding: 0.75rem 1rem;
+            background: linear-gradient(135deg, var(--bg-light) 0%, #0d1a0d 100%);
+            border: 1px solid var(--green-dark);
+            border-left: 3px solid var(--amber);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s;
+        }
+
+        .project:hover {
+            border-color: var(--green);
+            border-left-color: var(--green);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+            transform: translateX(4px);
+        }
+
+        .project.featured {
+            grid-column: 1 / -1;
+            border-left-color: var(--green);
+            background: linear-gradient(135deg, #0a1a0a 0%, #0d1a0d 100%);
+            border: 1px solid var(--green-dim);
+        }
+
+        .project.featured .project-title {
+            font-size: 14px;
+        }
+
+        .project.featured .project-title::after {
+            content: " ★";
+            color: var(--amber);
+        }
+
+        .project-title {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-desc {
+            color: var(--green-dim);
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .about-block {
+            background: var(--bg-light);
+            border: 1px solid var(--green-dark);
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .about-block h3 {
+            color: var(--amber);
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-block ul {
+            list-style: none;
+        }
+
+        .about-block li {
+            color: var(--green-dim);
+            margin: 0.25rem 0;
+        }
+
+        .about-block li::before {
+            content: "[✓] ";
+            color: var(--green);
+        }
+
+        .about-block.warning li::before {
+            content: "[✗] ";
+            color: #ff4444;
+        }
+
+        .about-block .conclusion {
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--green-dark);
+            color: var(--amber);
+            font-weight: 700;
+        }
+
+        .about-block .conclusion::before {
+            content: "→ ";
+        }
+
+        .case {
+            background: var(--bg-light);
+            border: 1px solid var(--green-dark);
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-problem {
+            color: var(--green-dim);
+            margin-bottom: 0.5rem;
+        }
+
+        .case-problem::before {
+            content: "✗ Проблема: ";
+            color: #ff6b6b;
+        }
+
+        .case-solution {
+            color: var(--green-dim);
+            margin-bottom: 0.5rem;
+        }
+
+        .case-solution::before {
+            content: "→ Решение: ";
+            color: var(--amber);
+        }
+
+        .case-result {
+            color: var(--green);
+            font-weight: 700;
+        }
+
+        .case-result::before {
+            content: "✓ Результат: ";
+            color: var(--green);
+        }
+
+        .cta-block {
+            background: linear-gradient(135deg, #0a1a0a 0%, #0d1a0d 100%);
+            border: 2px solid var(--amber);
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .cta-block h3 {
+            color: var(--amber);
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .cta-block p {
+            color: var(--green-dim);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-block .contacts {
+            margin-top: 0;
+        }
+
+        .more-projects {
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+            border-top: 1px dashed var(--green-dark);
+        }
+
+        .more-projects a {
+            color: var(--amber);
+            text-decoration: none;
+        }
+
+        .more-projects a:hover {
+            text-decoration: underline;
+            color: var(--green);
+        }
+
+        .articles-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .article {
+            display: block;
+            padding: 0.75rem 1rem;
+            background: var(--bg-light);
+            border: 1px solid var(--green-dark);
+            border-left: 3px solid #ff6b6b;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s;
+        }
+
+        .article:hover {
+            border-color: #ff6b6b;
+            box-shadow: 0 0 15px rgba(255, 107, 107, 0.2);
+            transform: translateX(4px);
+        }
+
+        .article-title {
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .article-title::before {
+            content: "📝 ";
+        }
+
+        .article-meta {
+            color: var(--green-dim);
+            font-size: 11px;
+            margin-top: 0.25rem;
+        }
+
+        .contacts {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .contacts a {
+            display: inline-block;
+            padding: 0.4rem 0.75rem;
+            background: var(--bg-light);
+            border: 1px solid var(--green-dark);
+            color: var(--green);
+            text-decoration: none;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .contacts a::before {
+            content: "→ ";
+            color: var(--amber);
+        }
+
+        .contacts a:hover {
+            border-color: var(--green);
+            background: var(--green-dark);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+        }
+
+        .contacts a.primary {
+            border-color: var(--amber);
+            background: rgba(255, 176, 0, 0.1);
+        }
+
+        .contacts a.primary:hover {
+            background: rgba(255, 176, 0, 0.2);
+            box-shadow: 0 0 10px rgba(255, 176, 0, 0.3);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        .stat-label {
+            color: var(--green-dim);
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .terminal { padding: 1rem; }
+            .ascii-art { font-size: 5px; }
+            .stats { gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <main class="terminal">
+        <div class="header">
+            <h1>Станислав Дубич</h1>
+            <p class="role">Senior Backend Developer</p>
+            <p class="tagline">Специализируюсь на решениях, которые приносят деньги, а не баллы на LeetCode</p>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">16+</div>
+                    <div class="stat-label">лет опыта</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">5+</div>
+                    <div class="stat-label">бэкенд-языков</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">High-Load</div>
+                    <div class="stat-label">Архитектура</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="intro">
+            <p>Я строю системы, которые работают под нагрузкой и 
+приносят деньги. За 16 лет прошёл путь от первых сайтов на PHP до 
+высоконагруженных платформ на Java и Go.</p>
+            <p>Моя специализация — backend для сложных бизнес-задач: 
+платёжные системы, real-time аналитика, интеграции с внешними API. Умею 
+разбираться в чужом коде, находить узкие места и делать так, чтобы 
+система не падала в пятницу вечером.</p>
+            <p>Работаю с AI-инструментами как с усилителем 
+продуктивности. Не боюсь новых технологий, но выбираю инструмент под 
+задачу, а не под хайп.</p>
+        </div>
+
+        <h2 class="section-title">Технологии</h2>
+
+        <div class="output">
+            <div class="stack-grid">
+                <div class="stack-block">
+                    <h3>Backend</h3>
+                    <span>Java</span>
+                    <span>Kotlin</span>
+                    <span>Go</span>
+                    <span>Rust</span>
+                    <span>Spring</span>
+                    <span>Ktor</span>
+                </div>
+                <div class="stack-block">
+                    <h3>Frontend</h3>
+                    <span>React</span>
+                    <span>Vue.js</span>
+                </div>
+                <div class="stack-block">
+                    <h3>Data</h3>
+                    <span>PostgreSQL</span>
+                    <span>Redis</span>
+                    <span>ClickHouse</span>
+                    <span>Kafka</span>
+                    <span>NATS</span>
+                    <span>gRPC</span>
+                </div>
+                <div class="stack-block">
+                    <h3>Infra</h3>
+                    <span>Docker</span>
+                    <span>Kubernetes</span>
+                    <span>Ansible</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Проекты</h2>
+
+        <div class="output">
+            <div class="projects-grid">
+                <a href="https://dubich.dev/projects/ss7-routing-platform.html" class="project">
+                    <div class="project-title">SMS-маршрутизатор</div>
+                    <div class="project-desc">Выбор оптимального маршрута для отправки SMS через 200+ операторов. 70K операций в секунду, 4 года без падений.</div>
+                </a>
+                <a href="https://dubich.dev/projects/url-shortener.html" class="project">
+                    <div class="project-title">Сокращатель ссылок</div>
+                    <div class="project-desc">Короткие ссылки с аналитикой кликов. Редирект за 20мс, статистика в реальном времени.</div>
+                </a>
+                <a href="https://dubich.dev/projects/ads-platform.html" class="project">
+                    <div class="project-title">Рекламная платформа</div>
+                    <div class="project-desc">B2B видеореклама с аукционом в реальном времени. 100 миллионов запросов в день.</div>
+                </a>
+                <a href="https://dubich.dev/projects/epp-domain-registrar.html" class="project">
+                    <div class="project-title">Доменный регистратор</div>
+                    <div class="project-desc">Продажа премиум-доменов с автоматической настройкой DNS и приёмом платежей.</div>
+                </a>
+                <a href="https://dubich.dev/projects/shooting-club-crm.html" class="project">
+                    <div class="project-title">CRM для B2B</div>
+                    <div class="project-desc">Учёт материальных ценностей, бронирование, контроль медосмотров и допусков.</div>
+                </a>
+                <a href="https://dubich.dev/projects/figma-backup-system.html" class="project">
+                    <div class="project-title">Система резервного копирования</div>
+                    <div class="project-desc">Автоматическое сохранение файлов из облачного сервиса для защиты от потери данных.</div>
+                </a>
+            </div>
+
+            <p class="more-projects"><span class="prompt">→</span> <a href="https://dubich.dev/projects.html">Все проекты</a></p>
+        </div>
+
+        <h2 class="section-title">Статьи</h2>
+
+        <div class="output">
+            <div class="articles-grid">
+                <a href="https://habr.com/ru/articles/900438/" class="article" target="_blank">
+                    <div class="article-title">Проксирование из коробки: сравнительный анализ HAProxy, Envoy, Nginx, Caddy и Traefik</div>
+                    <div class="article-meta">habr.com // 13 апр 2025</div>
+                </a>
+            </div>
+
+            <p class="more-projects"><span class="prompt">→</span> <a href="https://habr.com/ru/users/stas_dubich/publications/articles/" target="_blank">Все статьи на Хабре...</a></p>
+        </div>
+
+        <h2 class="section-title">Чем я полезен</h2>
+
+        <div class="output">
+            <div class="about-block">
+                <h3># Решаю задачи, а не создаю новые</h3>
+                <ul>
+                    <li>Быстро погружаюсь в незнакомый код и нахожу причину проблемы, пока другие ещё читают документацию</li>
+                    <li>Проектирую системы, которые выдерживают рост нагрузки — не приходится переписывать через полгода</li>
+                    <li>Интегрирую внешние API и legacy-системы без боли — знаю, где будут подводные камни</li>
+                    <li>Пишу код, который легко поддерживать — следующий разработчик скажет спасибо</li>
+                </ul>
+            </div>
+
+            <div class="about-block">
+                <h3># Экономлю ваше время и деньги</h3>
+                <ul>
+                    <li>Один senior вместо команды джунов — меньше коммуникации, быстрее результат</li>
+                    <li>Использую AI для рутины, а голову — для архитектуры и сложных решений</li>
+                    <li>Предупреждаю о рисках до того, как они станут проблемами</li>
+                    <li>Работаю асинхронно и самостоятельно — не нужно микроменеджить</li>
+                    <li>Предпочитаю письменную коммуникацию — так точнее формулирую мысли и всё остаётся в истории</li>
+                </ul>
+            </div>
+
+            <div class="about-block">
+                <h3># Подхожу для проектов, где важно</h3>
+                <ul>
+                    <li>Высокая нагрузка — тысячи и миллионы запросов</li>
+                    <li>Надёжность — система должна работать 24/7</li>
+                    <li>Сложная бизнес-логика — платежи, интеграции, real-time</li>
+                    <li>Быстрый запуск — MVP за недели, а не месяцы</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-title">Результаты</h2>
+
+        <div class="output">
+            <div class="case">
+                <div class="case-problem">Система не справлялась с нагрузкой — 1000 SMS/сек вызывали таймауты</div>
+                <div class="case-solution">Спроектировал реактивную архитектуру с изоляцией по номерам и gRPC-стримингом</div>
+                <div class="case-result">70K операций/сек, 99.9% uptime, 4 года без падений</div>
+            </div>
+
+            <div class="case">
+                <div class="case-problem">Редиректы занимали 200-500ms — пользователи уходили</div>
+                <div class="case-solution">Переписал сервис с NodeJS на Java, разделил пути чтения и записи</div>
+                <div class="case-result">Редирект за 20ms, аналитика без задержек через очередь</div>
+            </div>
+
+            <div class="case">
+                <div class="case-problem">Каждый новый сервер настраивали вручную по 4-6 часов</div>
+                <div class="case-solution">Создал IaC-репозиторий с шаблонизацией Docker Compose и автоматическими бэкапами</div>
+                <div class="case-result">Развёртывание нового проекта за 10 минут</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Опыт работы</h2>
+
+        <div class="output">
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Senior Backend Developer @ Дизайн-студия (NDA)</span>
+                    <span class="job-period">[2024-03 → present] // 1 год 9 месяцев</span>
+                </div>
+                <ul class="job-desc">
+                    <li>Рекламная платформа — B2B видеореклама 
+VAST/VMAP. Два сервиса: Java (админка) + Go (горячий путь, &lt; 10ms). 
+Аукцион второй цены на Redis, горячий кошелёк + холодный журнал для 
+финансов. 100M запросов/день, GitOps (ArgoCD + K8s)</li>
+                    <li>CRM для B2B — учёт специфических активов с 
+неизменяемым журналом операций. Java 21 + Spring Boot 3.4, WebSocket для
+ предотвращения двойных операций, гранулярная ролевая модель</li>
+                    <li>Система резервного копирования — RPA для 
+аварийного восстановления файлов. Изоляция ресурсов: Java (API) + Go 
+(воркеры). Очередь задач на PostgreSQL (FOR UPDATE SKIP LOCKED), 
+стриминг в S3</li>
+                    <li>Геймификация для маркетинга — backend для 
+промо-акции с призами. Go + Gin, двухэтапная авторизация по телефону с 
+AES-256, Semaphore для защиты внешних API</li>
+                    <li>Fantasy-платформа — fantasy-футбол. Go + 
+FastHTTP, движок подсчёта очков с идемпотентной обработкой, PostgreSQL 
+Advisory Locks для распределённых задач</li>
+                    <li>B2B-портал — личный кабинет для логистики. 
+WebSocket + Kafka архитектура, SOAP-интеграция с legacy-системами, 
+трёхэтапная регистрация с верификацией по ИНН</li>
+                    <li>Infrastructure as Code — IaC-репозиторий. 
+Шаблонизация Docker Compose для стандартизации микросервисов, настройка 
+безопасности серверов (iptables Default Deny), автоматические бэкапы в 
+S3</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Senior Backend Developer @ Intis Telecom</span>
+                    <span class="job-period">[2019-10 → 2024-01] // 4 года 4 месяца</span>
+                </div>
+                <ul class="job-desc">
+                    <li>SS7 Routing Platform — маршрутизация SMS через 
+SS7-протокол. 200+ стран/операторов, ~1K SMS/сек × 70 операций = 70K 
+RPS, 99.9% uptime. Реактивный стек (WebFlux, R2DBC, Reactor Kafka), 
+двунаправленный gRPC стриминг</li>
+                    <li>URL Shortener — рефакторинг NodeJS → Java. 
+Разделение путей чтения/записи: редирект &lt; 20ms из Memcached, 
+аналитика без ожидания через RabbitMQ → ClickHouse</li>
+                    <li>Registry Platform — EPP-сервер с нуля (RFC 5730)
+ для премиум-зоны. TCP/TLS, Spring Integration, интеграция Cloudflare 
+DNS + Stripe/PayPal</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Senior Backend Developer @ KickCity</span>
+                    <span class="job-period">[2018-05 → 2019-06] // 1 год 2 месяца</span>
+                </div>
+                <ul class="job-desc">
+                    <li>Децентрализованный одноранговый протокол для событийного маркетинга с вознаграждением участников</li>
+                    <li>Проектирование архитектуры, реализация проекта, интеграция с блокчейном Ethereum (Solidity)</li>
+                    <li>Технологии: Kotlin, Spring, React, MongoDB. Опыт написания Solidity контрактов</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Fullstack Developer @ Фриланс</span>
+                    <span class="job-period">[2009-09 → present] // 16+ лет</span>
+                </div>
+                <ul class="job-desc">
+                    <li>Широкий спектр проектов — от классических веб-систем до экспериментов на стыке гейминга и нейросетей</li>
+                    <li>Личные кабинеты, админки, CRM-панели — авторизация, учёт, управление контентом, интеграции с API</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-title">Образование</h2>
+
+        <div class="output">
+            <div class="about-block">
+                <h3># Высшее образование:</h3>
+                <ul>
+                    <li>Донецкий национальный технический университет (ДонНТУ)</li>
+                    <li>Период: 2006-2011</li>
+                    <li>Факультет: Компьютерных наук и технологий</li>
+                    <li>Степень: Специалист</li>
+                    <li>Специальность: Специализированные компьютерные системы</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta-block">
+            <h3>Готов обсудить ваш проект</h3>
+            <p>Расскажите о задаче — отвечу в течение дня. Консультация бесплатна.</p>
+            <div class="contacts">
+                <a href="https://t.me/sensei_developer" class="primary">Написать в Telegram</a>
+                <a href="mailto:stas.dubich@yandex.ru">Отправить email</a>
+            </div>
+        </div>
+    </main>
+
+
+</body></html>
