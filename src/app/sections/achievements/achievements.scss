@@ -2,10 +2,9 @@
 
 :host {
   text-align: center;
-  color: var(--mat-sys-secondary);
   @include span-centered-responsive((
     mobile: 12,
-    tablet: 6,
-    desktop: 4
+    tablet: 8,
+    desktop: 6
   ));
 }

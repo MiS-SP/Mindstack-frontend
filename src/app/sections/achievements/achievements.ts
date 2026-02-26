@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import {Stats} from './stats/stats';
 import {StatModel} from './stats/stat/stat.model';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-achievements',
   imports: [
-    Stats
+    Stats,
+    MatCardModule,
   ],
   templateUrl: './achievements.html',
   styleUrl: './achievements.scss',

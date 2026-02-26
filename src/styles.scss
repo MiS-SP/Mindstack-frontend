@@ -6,7 +6,6 @@
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
-
 html,body {
   height: 100vh;
 }
@@ -21,27 +20,6 @@ html {
     typography: Roboto,
     density: 0,
   ));
-}
-
-h1 {
-  font-size: var(--mat-sys-headline-large-size);
-  line-height: var(--mat-sys-headline-large-line-height);
-  font-family: var(--mat-sys-headline-large-font), serif;
-  color: var(--mat-sys-primary);
-}
-
-h1.display {
-  font-size: var(--mat-sys-display-large-size);
-  line-height: var(--mat-sys-display-large-line-height);
-  font-family: var(--mat-sys-display-large-font), serif;
-  color: var(--mat-sys-primary);
-}
-
-h2 {
-  font-size: var(--mat-sys-headline-large-size);
-  line-height: var(--mat-sys-headline-large-line-height);
-  font-family: var(--mat-sys-headline-large-font), serif;
-  color: var(--mat-sys-primary);
 }
 
 body {
@@ -77,6 +55,68 @@ body::before {
   pointer-events: none;
   z-index: 1000;
 }
+
+h1 {
+  font: var(--mat-sys-headline-large);
+  margin: 0 0 24px 0;
+}
+
+h2 {
+  font: var(--mat-sys-headline-medium);
+  margin: 0 0 20px 0;
+}
+
+h3 {
+  font: var(--mat-sys-headline-small);
+  margin: 0 0 16px 0;
+}
+
+h4 {
+  font: var(--mat-sys-headline-small);
+  margin: 0 0 12px 0;
+}
+
+h5 {
+  font: var(--mat-sys-headline-small);
+  margin: 0 0 8px 0;
+}
+
+h6 {
+  font: var(--mat-sys-headline-small);
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+h1,h2,h3 {
+  color: var(--mat-sys-on-surface);
+}
+
+h4,h5,h6 {
+  color: var(--mat-sys-on-surface-variant);
+}
+
+p {
+  font: var(--mat-sys-body-medium);
+  color: var(--mat-sys-on-surface-variant);
+  margin: 0 0 16px 0;
+}
+
+.display-large {
+  font: var(--mat-sys-display-large);
+  color: var(--mat-sys-on-surface);
+}
+
+.display-medium {
+  font: var(--mat-sys-display-medium);
+  color: var(--mat-sys-on-surface);
+}
+
+.display-small {
+  font: var(--mat-sys-display-small);
+  color: var(--mat-sys-on-surface);
+}
+
 
 router-outlet {
   display: none;
