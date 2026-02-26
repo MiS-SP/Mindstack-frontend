@@ -1,6 +1,8 @@
 @use 'grid-mixins' as *;
 
 :host {
+  text-align: center;
+  color: var(--mat-sys-secondary);
   @include span-centered-responsive((
     mobile: 12,
     tablet: 6,

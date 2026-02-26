@@ -1,0 +1,13 @@
+:host {
+  .stat-value {
+    font-size: var(--mat-sys-display-small-size);
+    line-height: var(--mat-sys-display-small-line-height);
+    color: var(--mat-sys-primary);
+    display: block;
+    text-align: center;
+  }
+  .stat-label {
+    display: block;
+    text-align: center;
+  }
+}
