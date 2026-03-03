@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  background-color: var(--mat-sys-tertiary);
+  height: auto;
+  width: auto;
+}
+
+:host:hover, :host:focus, :host:active {
+  background-color: var(--mat-sys-primary);
+}

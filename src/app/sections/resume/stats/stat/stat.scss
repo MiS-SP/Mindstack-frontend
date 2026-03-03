@@ -5,6 +5,9 @@
     color: var(--mat-sys-primary);
     display: block;
     text-align: center;
+    &:hover {
+      color: var(--mat-sys-tertiary);
+    }
   }
   .stat-label {
     display: block;

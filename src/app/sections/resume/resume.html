@@ -1,0 +1,44 @@
+<section>
+  <article>
+    <div class="text-center">
+      <h1 class="mat-text-primary" itemprop="name">
+        Сургутов Михаил — Middle+ Fullstack Developer
+      </h1>
+      <h2 class="mat-text-tertiary" itemprop="jobTitle">
+        Middle+ Fullstack Developer
+      </h2>
+      <p itemprop="description">
+        Специализируюсь на решениях, которые приносят деньги, а не баллы на LeetCode
+      </p>
+    </div>
+    <app-resume-stats [stats]="myStats"></app-resume-stats>
+    <app-resume-intro>
+      <p>Я строю системы, которые работают под нагрузкой и приносят деньги.
+        За 6 лет прошёл путь от первых сайтов на PHP до высоконагруженных платформ на Go.
+      </p>
+      <p>
+        Моя специализация — backend для сложных бизнес-задач:
+        <strong>платёжные системы</strong>, <strong>real-time аналитика</strong>,
+        <strong>интеграции с внешними API</strong>.
+        Умею разбираться в чужом коде, находить узкие места и делать так,
+        чтобы система не падала в пятницу вечером.
+      </p>
+      <p>
+        Работаю с AI-инструментами как с усилителем продуктивности. Не боюсь новых технологий, но выбираю инструмент под задачу, а не под хайп.
+      </p>
+    </app-resume-intro>
+    <h3 class="hashed hashed-tertiary mat-text-primary">Технологии</h3>
+    <app-resume-techs [techs]="myTechs" />
+    <h3 class="hashed hashed-tertiary mat-text-primary">Проекты</h3>
+    <app-resume-projects />
+    <h3 class="hashed hashed-tertiary mat-text-primary">Чем я полезен</h3>
+    <app-resume-profit />
+    <h3 class="hashed hashed-tertiary mat-text-primary">Результаты</h3>
+    <app-resume-results />
+    <h3 class="hashed hashed-tertiary mat-text-primary">Опыт работы</h3>
+    <app-resume-exp />
+    <h3 class="hashed hashed-tertiary mat-text-primary">Образование</h3>
+    <app-resume-education />
+    <app-resume-contact />
+  </article>
+</section>

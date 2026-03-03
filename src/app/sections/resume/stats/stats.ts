@@ -3,7 +3,7 @@ import {StatModel} from './stat/stat.model';
 import {Stat} from './stat/stat';
 
 @Component({
-  selector: 'app-achievements-stats',
+  selector: 'app-resume-stats',
   imports: [
     Stat
   ],

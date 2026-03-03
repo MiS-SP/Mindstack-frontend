@@ -1,7 +1,6 @@
 @use 'grid-mixins' as *;
 
 :host {
-  text-align: center;
   @include span-centered-responsive((
     mobile: 12,
     tablet: 8,
