@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import {Stats} from "./stats/stats";
 import {StatModel} from './stats/stat/stat.model';
 import {Intro} from './intro/intro';
-import {TechModel} from './techs/tech.model';
-import {Techs} from './techs/techs';
+import {TechModel} from '../../grids/tech-stack-grid/tech.model';
+import {TechStackGrid} from '../../grids/tech-stack-grid/tech-stack-grid';
 import {Projects} from './projects/projects';
 import {Profit} from './profit/profit';
 import {Results} from './results/results';
@@ -16,7 +16,7 @@ import {Contact} from './contact/contact';
   imports: [
     Stats,
     Intro,
-    Techs,
+    TechStackGrid,
     Projects,
     Profit,
     Results,

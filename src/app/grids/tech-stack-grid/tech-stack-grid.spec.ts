@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Techs } from './techs';
+import { TechStackGrid } from './tech-stack-grid';
 
-describe('Techs', () => {
-  let component: Techs;
-  let fixture: ComponentFixture<Techs>;
+describe('TechStackGrid', () => {
+  let component: TechStackGrid;
+  let fixture: ComponentFixture<TechStackGrid>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Techs]
+      imports: [TechStackGrid]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Techs);
+    fixture = TestBed.createComponent(TechStackGrid);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

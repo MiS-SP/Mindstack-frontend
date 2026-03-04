@@ -4,16 +4,15 @@ import {TechModel} from './tech.model';
 import {MatIcon} from '@angular/material/icon';
 import {MatGridListModule} from '@angular/material/grid-list';
 
+
 @Component({
-  selector: 'app-resume-techs',
-  imports: [
-    MatGridListModule,
-    MatListModule,
+  selector: 'app-tech-stack-grid',
+  imports: [MatListModule,
     MatIcon,
-  ],
-  templateUrl: './techs.html',
-  styleUrl: './techs.scss',
+    MatGridListModule],
+  templateUrl: './tech-stack-grid.html',
+  styleUrl: './tech-stack-grid.scss',
 })
-export class Techs {
+export class TechStackGrid {
   @Input() techs!: TechModel[];
 }

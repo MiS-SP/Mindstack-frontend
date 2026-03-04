@@ -1,0 +1,17 @@
+<div class="stack-grid">
+  @for (tech of techs; track tech.label) {
+    <div class="tech-item">
+      <mat-list>
+      <h4>{{ tech.label }}</h4>
+      @for (name of tech.values; track name) {
+        <mat-list-item role="listitem" >
+          <mat-icon style="color: var(--mat-sys-on-primary-fixed-variant); fill: currentColor;" matListItemIcon>arrow_right_alt</mat-icon>
+          <span>{{ name }}</span>
+        </mat-list-item>
+      }
+      </mat-list>
+    </div>
+  }
+</div>
+
+

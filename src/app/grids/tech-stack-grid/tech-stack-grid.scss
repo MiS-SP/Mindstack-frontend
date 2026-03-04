@@ -1,0 +1,17 @@
+@use '@angular/material' as mat;
+
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.tech-item {
+  padding: 0.75rem;
+  border: solid 2px var(--mat-sys-primary-container);
+  border-radius: 12px;
+  background-color: var(--mat-sys-surface-container);
+  @include mat.elevation(1);
+}

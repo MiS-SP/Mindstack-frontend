@@ -14,12 +14,14 @@ html {
   @include mat.system-classes();
   @include mat.theme((
     color: (
-      primary: mat.$cyan-palette,
+      primary: mat.$green-palette,
       tertiary: mat.$orange-palette,
     ),
-    typography: Roboto,
-    density: 0,
+    typography: '"Roboto"',
+    density: -4,
   ));
+  --mat-card-outlined-outline-width: 1px;
+  --mat-card-outlined-outline-color: var(--mat-sys-primary-container);
 }
 
 body {
@@ -56,50 +58,24 @@ body::before {
   z-index: 1000;
 }
 
-h1 {
-  font: var(--mat-sys-headline-large);
-  margin: 0 0 24px 0;
-}
+h1 { font: var(--mat-sys-headline-large); color: var(--mat-sys-on-surface); margin: 0 0 24px 0; }
+h2 { font: var(--mat-sys-headline-medium); color: var(--mat-sys-on-surface); margin: 0 0 20px 0;}
+h3 { font: var(--mat-sys-headline-small); color: var(--mat-sys-on-surface); margin: 0 0 16px 0;}
+h4 { font: var(--mat-sys-title-large); color: var(--mat-sys-on-surface); margin: 0 0 12px 0;}
+h5 { font: var(--mat-sys-title-medium); color: var(--mat-sys-on-surface-variant); margin: 0 0 8px 0;}
+h6 { font: var(--mat-sys-title-small); color: var(--mat-sys-on-surface-variant); margin: 0 0 8px 0; text-transform: uppercase; letter-spacing: 0.5px;}
 
-h2 {
-  font: var(--mat-sys-headline-medium);
-  margin: 0 0 20px 0;
-}
-
-h3 {
-  font: var(--mat-sys-headline-small);
+p {
   margin: 0 0 16px 0;
 }
 
-h4 {
-  font: var(--mat-sys-headline-small);
-  margin: 0 0 12px 0;
-}
-
-h5 {
-  font: var(--mat-sys-headline-small);
-  margin: 0 0 8px 0;
-}
-
-h6 {
-  font: var(--mat-sys-headline-small);
-  margin: 0 0 8px 0;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-h1,h2,h3 {
+p,span {
   color: var(--mat-sys-on-surface);
 }
 
-h4,h5,h6 {
+.small, .caption {
+  font-family: var(--mat-sys-body-small-font);
   color: var(--mat-sys-on-surface-variant);
-}
-
-p {
-  font: var(--mat-sys-body-medium);
-  color: var(--mat-sys-on-surface-variant);
-  margin: 0 0 16px 0;
 }
 
 .display-large {
@@ -116,7 +92,6 @@ p {
   font: var(--mat-sys-display-small);
   color: var(--mat-sys-on-surface);
 }
-
 
 router-outlet {
   display: none;
@@ -152,4 +127,15 @@ router-outlet {
   color: var(--mat-sys-tertiary);
 }
 
+.d-flex {
+  display: flex;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.flex-content-between {
+  justify-content: space-between;
+}
 /* You can add global styles to this file, and also import other style files */
