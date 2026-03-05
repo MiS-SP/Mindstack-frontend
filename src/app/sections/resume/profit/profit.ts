@@ -1,8 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MatListModule} from '@angular/material/list';
 import {MatIcon} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {ProfitModel} from './profit.model';
 
 @Component({
   selector: 'app-resume-profit',
@@ -13,5 +14,5 @@ import {MatTooltipModule} from '@angular/material/tooltip';
   styleUrl: './profit.scss',
 })
 export class Profit {
-
+@Input() profits !: ProfitModel[]
 }
