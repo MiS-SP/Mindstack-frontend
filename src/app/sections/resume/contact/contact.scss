@@ -1,0 +1,30 @@
+@use '@angular/material' as mat;
+
+:host {
+
+}
+
+.mat-tg-btn {
+  @include mat.button-overrides((
+    outlined-outline-width: 2px,
+    outlined-outline-color: orange
+  ))
+}
+
+mat-card {
+  border-color: var(--mat-sys-tertiary);
+}
+
+mat-card-content {
+  display: flex;
+}
+mat-card-actions {
+  gap: 16px;
+}
+
+mat-card-header,mat-card-content,mat-card-actions {
+  background-color: var(--mat-sys-surface-container);
+  justify-content: center;
+}
+
+
