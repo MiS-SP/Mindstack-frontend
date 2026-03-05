@@ -12,6 +12,6 @@
   padding: 0.75rem;
   border: solid 2px var(--mat-sys-primary-container);
   border-radius: 12px;
-  background-color: var(--mat-sys-surface-container);
+  background-color: var(--mat-sys-surface);
   @include mat.elevation(1);
 }
